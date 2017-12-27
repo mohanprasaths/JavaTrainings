@@ -3,21 +3,28 @@ package test.streams;
 import java.io.*;
 
 public class FileAndBufferedStream {
-    public static void main(String args[]){
-        CustomFileWriter cw = new CustomFileWriter("output.txt");
+    public static void main(String args[]) throws IOException {
+        System.out.println("Working Directory = " +
+                System.getProperty("user.dir"));
+        CustomFileReader cw = new CustomFileReader("./output.txt");
+        cw.ReadIFromFile();
     }
 }
 
-class CustomFileWriter  {
+class CustomFileReader  {
     BufferedReader outputStream;
-    CustomFileWriter(String filename) {
+    CustomFileReader(String filename) {
         try {
-            this.outputStream = new BufferedReader(new FileWriter(filename));
-        } catch (IOException e) {
+            this.outputStream = new BufferedReader(new FileReader(filename));
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    public void WriteInFile(String content){
-
+    public void ReadIFromFile() throws IOException {
+        String inValue;
+        while((inValue=this.outputStream.readLine()) != null){
+            System.out.println(inValue);
+        }
     }
 }
+
