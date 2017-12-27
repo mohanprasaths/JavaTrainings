@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.Reader;
 
 public class TryAndCatch {
-    public static  void main(String args){
-        try(AutoClose ac = new Autoclose()){
+    public static  void main(String args[]){
+        try(Autoclose ac = new Autoclose()){
             ac.saySomething();
         }catch (Exception e){
 
@@ -13,8 +13,8 @@ public class TryAndCatch {
     }
 }
 
-interface Autoclose  implements AutoCloseable{
-    public void saySomething throws IOException(){
+class Autoclose  implements AutoCloseable{
+    public void saySomething() throws IOException {
         System.out.println("Hi there");
     }
     @Override
