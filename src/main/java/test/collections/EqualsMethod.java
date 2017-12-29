@@ -15,7 +15,7 @@ public class EqualsMethod {
 
         myList.remove(object3);
         for(MyClass o:myList){
-            System.out.println(o.value);
+            System.out.println(o.key+o.value);
         }
     }
 }
@@ -29,5 +29,8 @@ class MyClass{
     public boolean equals(Object o){
         MyClass ori = (MyClass) o;
         return value.equals(ori.value);
+    }
+    public String getLabel(){
+        return this.value;
     }
 }
