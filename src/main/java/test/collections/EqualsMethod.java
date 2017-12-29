@@ -20,7 +20,7 @@ public class EqualsMethod {
     }
 }
 
-class MyClass{
+class MyClass implements Comparable<MyClass>{
     int key; String value;
     public MyClass(int key,String value){
         this.key = key;
@@ -32,5 +32,11 @@ class MyClass{
     }
     public String getLabel(){
         return this.value;
+    }
+    public int compareTo(MyClass other){
+        return  value.compareToIgnoreCase(other.value);
+    }
+    public String toString(){
+        return this.key + " | " + this.value;
     }
 }
